@@ -1,0 +1,169 @@
+<div class="flex flex-col max-w-240 md:min-w-160 max-h-screen -m-6">
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <div class="text-lg font-medium">Cuota</div>
+        <button
+            mat-icon-button
+            (click)="cancel()"
+            [tabIndex]="-1">
+            <mat-icon
+                class="text-current"
+                [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+
+    <!-- Compose form -->
+    <form
+        class="flex flex-col flex-auto p-4 sm:p-4 overflow-y-auto"
+        [formGroup]="form">
+
+        <div class="grid sm:grid-cols-4 gap-2 w-full mt-2">
+            <div class="sm:col-span-4">
+                <mat-form-field class="w-full">
+                    <mat-label>Concepto</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'conceptoFactura'">
+                </mat-form-field>
+            </div>
+            <div class="sm:col-span-2">
+                <mat-form-field class="w-full">
+                    <mat-label>Importe</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'importeConcepto'">
+                </mat-form-field>
+            </div>
+            <!-- TODO: cargar dinámicamente-->
+            <div class="sm:col-span-2">
+                <mat-form-field class="w-full">
+                    <mat-label>Grupo</mat-label>
+                    <mat-select [formControlName]="'grupo'">
+                        <mat-option [value]="1">Enero</mat-option>
+                        <mat-option [value]="2">Febrero</mat-option>
+                        <mat-option [value]="3">Marzo</mat-option>
+                        <mat-option [value]="4">Abril</mat-option>
+                        <mat-option [value]="5">Mayo</mat-option>
+                        <mat-option [value]="6">Junio</mat-option>
+                        <mat-option [value]="7">Julio</mat-option>
+                        <mat-option [value]="8">Agosto</mat-option>
+                        <mat-option [value]="9">Septiembre</mat-option>
+                        <mat-option [value]="10">Octubre</mat-option>
+                        <mat-option [value]="11">Noviembre</mat-option>
+                        <mat-option [value]="12">Diciembre</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- TODO: cargar dinámicamente-->
+            <div class="sm:col-span-2">
+                <mat-form-field class="w-full">
+                    <mat-label>Forma pago</mat-label>
+                    <mat-select [formControlName]="'formasPago'">
+                        <mat-option [value]="1">Transferencia</mat-option>
+                        <mat-option [value]="2">Recibo bancario</mat-option>
+                        <mat-option [value]="3">Metálico</mat-option>
+                        <mat-option [value]="4">Indeterminado</mat-option>
+                        <mat-option [value]="5">Contrareembolso</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="w-full">
+                    <mat-label>Orden</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'orden'">
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="w-full">
+                    <mat-label>Ref. Mandato</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'referenciaMandato'">
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="w-full">
+                    <mat-label>Fecha firma Mandato</mat-label>
+                    <input
+                        [readonly]="true"
+                        matInput
+                        [matDatepicker]="fechaFirmaDatepicker"
+                        [formControlName]="'fechaFirmaMandato'">
+                    <mat-datepicker-toggle
+                        matSuffix
+                        [for]="fechaFirmaDatepicker">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #fechaFirmaDatepicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-4">
+                <mat-form-field class="w-full">
+                    <mat-label>IBAN</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'iban'">
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <div class="flex items-center justify-start">
+                    <div
+                        class="leading-6">Pago periodico
+                    </div>
+                    <mat-slide-toggle
+                    class="ml-2"
+                    [color]="'primary'"
+                    [formControlName]="'pagoPeriodico'"
+                    #inquiry>
+                    </mat-slide-toggle>
+                </div>
+            </div>
+
+            <!-- TODO: cargar dinámicamente-->
+            <div class="sm:col-span-2">
+                <mat-form-field class="w-full">
+                    <mat-label>Estado</mat-label>
+                    <mat-select [formControlName]="'estado'">
+                        <mat-option [value]="1">Alta</mat-option>
+                        <mat-option [value]="2">Baja</mat-option>
+                        <mat-option [value]="3">Indeterminado</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 sm:mt-6">
+            <div class="flex items-center mt-4 sm:mt-0">
+                <!-- Discard -->
+                <button
+                    class="ml-auto sm:ml-0"
+                    mat-stroked-button
+                    (click)="cancel()">
+                    Cancelar
+                </button>
+                <button
+                    class="ml-2"
+                    mat-flat-button
+                    [disabled]="!form.valid"
+                    [color]="'primary'"
+                    (click)="saveAndClose()">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,339 @@
+<div class="w-full max-w-3xl">
+
+    <!-- Form -->
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="saveForm()">
+
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Tipo asociado</mat-label>
+                    <mat-select [formControlName]="'codigoTipoCliente'">
+                        <mat-option [value]="null">Seleccione una opción</mat-option>
+                        <mat-option [value]="tipoAsociado.id" *ngFor="let tipoAsociado of typesAsociados">{{tipoAsociado.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Fecha alta</mat-label>
+                    <input
+                        [readonly]="true"
+                        matInput
+                        [matDatepicker]="fechaAltaDatepicker"
+                        [formControlName]="'fechaAlta'">
+                    <mat-datepicker-toggle
+                        matSuffix
+                        [for]="fechaAltaDatepicker">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #fechaAltaDatepicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <!-- Name -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Nombre y Apellidos</mat-label>
+                    <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:user'"
+                        matPrefix></mat-icon>
+                    <input
+                        [formControlName]="'nombreFiscal'"
+                        matInput>
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Cif</mat-label>
+                    <input
+                        [formControlName]="'cif'"
+                        matInput>
+                </mat-form-field>
+            </div>
+
+            <!-- About -->
+            <div class="sm:col-span-4">
+                <mat-form-field class="fuse-mat-textarea fuse-mat-no-subscript w-full">
+                    <mat-label>Observaciones</mat-label>
+                    <textarea
+                        matInput
+                        [formControlName]="'observaciones'"
+                        cdkTextareaAutosize
+                        [cdkAutosizeMinRows]="5"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="my-10 border-t"></div>
+
+
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+            <!-- Direccion -->
+            <div class="sm:col-span-4">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Dirección</mat-label>
+                    <input
+                        [formControlName]="'direccion'"
+                        matInput>
+                </mat-form-field>
+            </div>
+
+
+            <!-- CP -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Código postal</mat-label>
+                    <input
+                        [formControlName]="'codigoPostal'"
+                        matInput>
+                </mat-form-field>
+            </div>
+
+            <!-- Localidad -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Localidad</mat-label>
+                    <input
+                        [formControlName]="'localidad'"
+                        matInput>
+                </mat-form-field>
+            </div>
+
+            <!-- Provincia -->
+            <!-- TODO: cargar todas las provincias -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Provincia</mat-label>
+                    <mat-select [formControlName]="'provincia'">
+                        <mat-option [value]="'Álava'">Álava</mat-option>
+                        <mat-option [value]="'Albacete'">Albacete</mat-option>
+                        <mat-option [value]="'Alicante'">Alicante</mat-option>
+                        <mat-option [value]="'Almería'">Almería</mat-option>
+                        <mat-option [value]="'Asturias'">Asturias</mat-option>
+                        <mat-option [value]="'Ávila'">Ávila</mat-option>
+                        <mat-option [value]="'Badajoz'">Badajoz</mat-option>
+                        <mat-option [value]="'Barcelona'">Barcelona</mat-option>
+                        <mat-option [value]="'Burgos'">Burgos</mat-option>
+                        <mat-option [value]="'Cáceres'">Cáceres</mat-option>
+                        <mat-option [value]="'Cádiz'">Cádiz</mat-option>
+                        <mat-option [value]="'Cantabria'">Cantabria</mat-option>
+                        <mat-option [value]="'Castellón'">Castellón</mat-option>
+                        <mat-option [value]="'Ciudad Real'">Ciudad Real</mat-option>
+                        <mat-option [value]="'Córdoba'">Córdoba</mat-option>
+                        <mat-option [value]="'Cuenca'">Cuenca</mat-option>
+                        <mat-option [value]="'Gerona'">Gerona</mat-option>
+                        <mat-option [value]="'Granada'">Granada</mat-option>
+                        <mat-option [value]="'Guadalajara'">Guadalajara</mat-option>
+                        <mat-option [value]="'Guipúzcoa'">Guipúzcoa</mat-option>
+                        <mat-option [value]="'Huelva'">Huelva</mat-option>
+                        <mat-option [value]="'Huesca'">Huesca</mat-option>
+                        <mat-option [value]="'Islas Baleares'">Islas Baleares</mat-option>
+                        <mat-option [value]="'Jaén'">Jaén</mat-option>
+                        <mat-option [value]="'La Coruña'">La Coruña</mat-option>
+                        <mat-option [value]="'La Rioja'">La Rioja</mat-option>
+                        <mat-option [value]="'Las Palmas'">Las Palmas</mat-option>
+                        <mat-option [value]="'León'">León</mat-option>
+                        <mat-option [value]="'Lérida'">Lérida</mat-option>
+                        <mat-option [value]="'Lugo'">Lugo</mat-option>
+                        <mat-option [value]="'Madrid'">Madrid</mat-option>
+                        <mat-option [value]="'Murcia'">Murcia</mat-option>
+                        <mat-option [value]="'Navarra'">Navarra</mat-option>
+                        <mat-option [value]="'Orense'">Orense</mat-option>
+                        <mat-option [value]="'Palencia'">Palencia</mat-option>
+                        <mat-option [value]="'Pontevedra'">Pontevedra</mat-option>
+                        <mat-option [value]="'Salamanca'">Salamanca</mat-option>
+                        <mat-option [value]="'Santa Cruz de Tenerife'">Santa Cruz de Tenerife</mat-option>
+                        <mat-option [value]="'Segovia'">Segovia</mat-option>
+                        <mat-option [value]="'Sevilla'">Sevilla</mat-option>
+                        <mat-option [value]="'Soria'">Soria</mat-option>
+                        <mat-option [value]="'Tarragona'">Tarragona</mat-option>
+                        <mat-option [value]="'Teruel'">Teruel</mat-option>
+                        <mat-option [value]="'Toledo'">Toledo</mat-option>
+                        <mat-option [value]="'Valencia'">Valencia</mat-option>
+                        <mat-option [value]="'Valladolid'">Valladolid</mat-option>
+                        <mat-option [value]="'Vizcaya'">Valladolid</mat-option>
+                        <mat-option [value]="'Zamora'">Valladolid</mat-option>
+                        <mat-option [value]="'Zaragoza'">Valladolid</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Country -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>País</mat-label>
+                    <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:location-marker'"
+                        matPrefix></mat-icon>
+                    <mat-select [formControlName]="'pais'">
+                        <mat-option [value]="'españa'">España</mat-option>
+                        <mat-option [value]="'canada'">Canada</mat-option>
+                        <mat-option [value]="'mexico'">Mexico</mat-option>
+                        <mat-option [value]="'francia'">Francia</mat-option>
+                        <mat-option [value]="'alemania'">Alemania</mat-option>
+                        <mat-option [value]="'italia'">Italia</mat-option>
+                        <mat-option [value]="'inglaterra'">Inglaterra</mat-option>
+                        <mat-option [value]="'portugal'">Portugal</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Email -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Email</mat-label>
+                    <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:mail'"
+                        matPrefix></mat-icon>
+                    <input
+                        [formControlName]="'email'"
+                        matInput>
+                </mat-form-field>
+            </div>
+            <!-- Phone -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Teléfono</mat-label>
+                    <mat-icon
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:phone'"
+                        matPrefix></mat-icon>
+                    <input
+                        [formControlName]="'telefono'"
+                        matInput>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <!-- Divider -->
+        <div class="my-10 border-t"></div>
+
+
+
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Naturaleza</mat-label>
+                    <mat-select [formControlName]="'naturaleza'">
+                        <mat-option [value]="1">Persona Física</mat-option>
+                        <mat-option [value]="2">Persona Jurídica</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- TODO: cargar de manera dinámica -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Forma Jurídica</mat-label>
+                    <mat-select [formControlName]="'codigoTipoSociedad'">
+                        <mat-option [value]="forma.id" *ngFor="let forma of formasJuridicas">{{ forma.nombre }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-4 flex flex-row">
+                <mat-form-field class="fuse-mat-no-subscript mr-4">
+                    <mat-label>Nº Cuenta</mat-label>
+                    <input
+                        [formControlName]="'codigoBanco'"
+                        matInput>
+                </mat-form-field>
+                <mat-form-field class="fuse-mat-no-subscript mr-4">
+                    <mat-label></mat-label>
+                    <input
+                        [formControlName]="'codigoSucursal'"
+                        matInput>
+                </mat-form-field>
+                <mat-form-field class="fuse-mat-no-subscript mr-4">
+                    <mat-label></mat-label>
+                    <input
+                        [formControlName]="'digitoControl'"
+                        matInput>
+                </mat-form-field>
+                <mat-form-field class="fuse-mat-no-subscript flex-1">
+                    <mat-label></mat-label>
+                    <input
+                        [formControlName]="'cuenta'"
+                        matInput>
+                </mat-form-field>
+            </div>
+
+            <!-- TODO: cargar de manera dinámica -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>BIC</mat-label>
+                    <mat-select [formControlName]="'bic'">
+                        <mat-option [value]="bic.codigoBanco" *ngFor="let bic of bics">{{ bic.bic }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div class="sm:col-span-4 flex flex-row items-end">
+                <mat-form-field class="fuse-mat-no-subscript flex-1 mr-4">
+                    <mat-label>IBAN</mat-label>
+                    <input
+                        [formControlName]="'iban'"
+                        matInput>
+                </mat-form-field>
+                <button
+                    mat-stroked-button
+                    type="button">
+                    Calcular IBAN
+                </button>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="mt-11 mb-10 border-t"></div>
+
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+            <div class="sm:col-span-2">
+                <div class="flex items-center justify-start">
+                    <div
+                        class="leading-6">Descatalogado
+                    </div>
+                    <mat-slide-toggle
+                    class="ml-2"
+                    [color]="'primary'"
+                    [formControlName]="'descatalogado'"
+                    #inquiry>
+                    </mat-slide-toggle>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <!-- Divider -->
+        <div class="mt-11 mb-10 border-t"></div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-end">
+            <button
+                (click)="cancel()"
+                mat-stroked-button
+                type="button">
+                Cancelar
+            </button>
+            <button
+                [disabled]="!form.valid"
+                type="submit"
+                class="ml-4"
+                mat-flat-button
+                [color]="'primary'">Guardar
+            </button>
+        </div>
+    </form>
+
+</div>

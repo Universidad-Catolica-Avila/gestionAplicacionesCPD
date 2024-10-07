@@ -10,14 +10,14 @@ import { InitialDataResolver } from 'app/app.resolvers';
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/example'
-    {path: '', pathMatch : 'full', redirectTo: 'asociados'},
+    {path: '', pathMatch : 'full', redirectTo: 'gestion-imagenes'},
 
     // Redirect signed in user to the '/example'
     //
     // After the user signs in, the sign in page will redirect the user to the 'signed-in-redirect'
     // path. Below is another redirection for that path to redirect the user to the desired
     // location. This is a small convenience to keep all main routes together here on this file.
-    {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'asociados'},
+    {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'gestion-imagenes'},
 
     // Auth routes for guests
     {
@@ -74,9 +74,11 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children   : [
-            {path: 'asociados', loadChildren: () => import('app/modules/admin/asociados/asociados.module').then(m => m.AsociadosModule)},
-            {path: 'remesas', loadChildren: () => import('app/modules/admin/remesas/remesas.module').then(m => m.RemesasModule)},
-            {path: 'usuarios', loadChildren: () => import('app/modules/admin/usuarios/usuarios.module').then(m => m.UsuariosModule)},
+            {path: 'gestion-imagenes', loadChildren: () => import('app/modules/admin/gestion-imagenes/gestion-imagenes.module').then(m => m.GestionImagenesModule)},   
+            {path: 'cargar-datos', loadChildren: () => import('app/modules/admin/cargar-datos/cargar-datos.module').then(m => m.CargarDatosModule)},   
+            {path: 'usuarios', loadChildren: () => import('app/modules/admin/usuarios/usuarios.module').then(m => m.UsuariosModule)}
+           /* {path: 'asociados', loadChildren: () => import('app/modules/admin/asociados/asociados.module').then(m => m.AsociadosModule)},            
+            {path: 'usuarios', loadChildren: () => import('app/modules/admin/usuarios/usuarios.module').then(m => m.UsuariosModule)},*/
         ]
     }
 ];

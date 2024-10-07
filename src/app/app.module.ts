@@ -17,6 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { GestionImagenesComponent } from './modules/admin/gestion-imagenes/gestion-imagenes.component';
+import { CargarDatosComponent } from './modules/admin/cargar-datos/cargar-datos.component';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -25,7 +27,7 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent
     ],
     imports     : [
         BrowserModule,

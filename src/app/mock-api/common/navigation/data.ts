@@ -9,18 +9,18 @@ export const defaultNavigation: FuseNavigationItem[] = [
         roles   : [1,2],
         children: [
             {
-                id   : 'asociados',
-                title: 'Asociados',
+                id   : 'gestionImagenes',
+                title: 'Gestión Imágenes',
                 type : 'basic',
-                icon : 'heroicons_outline:users',
-                link : '/asociados'
+                icon : 'heroicons_outline:identification',
+                link : '/gestion-imagenes'
             },
             {
-                id   : 'remesas',
-                title: 'Remesas',
+                id   : 'cargarDatos',
+                title: 'Cargar Datos',
                 type : 'basic',
                 icon : 'heroicons_outline:document-duplicate',
-                link : '/remesas'
+                link : '/cargar-datos'
             }
         ]
     },

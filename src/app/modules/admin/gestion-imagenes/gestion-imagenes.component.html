@@ -1,0 +1,40 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between py-8 px-6 md:px-8 bg-card">
+        <!-- Title -->
+        <div>
+            <div class="text-4xl font-extrabold tracking-tight leading-none">Gestión de Imágenes</div>
+        </div>
+        <!-- Main actions -->
+        <div class="flex items-center mt-4 sm:mt-0 md:mt-4">
+            <!-- Aquí puedes añadir acciones adicionales si las necesitas -->
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
+        <!-- CONTENT GOES HERE -->
+        <div class="h-400 min-h-400 max-h-400">
+            
+            <!-- Formulario para seleccionar el archivo ZIP -->
+            <form>
+                <div class="flex flex-col space-y-4">
+                    <!-- Campo para seleccionar el archivo ZIP -->
+                    <div>
+                        <label for="zipFile" class="block text-lg font-medium text-gray-700">Por favor, seleccione el archivo ZIP que desea procesar</label>
+                        <input type="file" id="zipFile" accept=".zip, .rar" (change)="onFileSelected($event)" class="mt-2 p-2 border rounded-md">
+                        <button *ngIf="fileSelected" 
+                            class="ml-4"
+                            mat-flat-button
+                            [color]="'primary'"
+                            (click)="processFile()">
+                            <mat-icon [svgIcon]="'heroicons_outline:inbox'"></mat-icon>
+                            <span class="ml-2 mr-1">Procesar zip</span>
+                            </button>
+                    </div>
+                    
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
